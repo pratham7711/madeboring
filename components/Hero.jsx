@@ -35,8 +35,8 @@ export default function Hero() {
       <div className="hero-bg">
         <video
           className="hero-film-layer"
-          src="/video/fullstop.mp4"
-          poster="/video/fullstop-poster.jpg"
+          src="/video/nobody.mp4"
+          poster="/video/nobody-poster.jpg"
           autoPlay
           muted
           loop
