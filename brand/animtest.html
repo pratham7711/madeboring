@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>SMIL probe</title>
+<style>body{margin:0;background:#eee}#h{width:1200px}</style>
+<div id="h"></div>
+<script>
+fetch('assets/field/svg/logo-animated.svg').then(r=>r.text()).then(t=>{
+  document.getElementById('h').innerHTML=t;
+  window.__ready=1;
+});
+window.probe=function(times){
+  const svg=document.querySelector('#h svg');
+  const dot=svg.querySelector('circle');
+  const out=[];
+  svg.pauseAnimations();
+  for(const t of times){
+    svg.setCurrentTime(t);
+    const b=dot.getBoundingClientRect();
+    const vis=[...svg.querySelectorAll('path')].filter(p=>
+      getComputedStyle(p).opacity>0.5).length;
+    out.push({t, x:Math.round(b.x+b.width/2), y:Math.round(b.y+b.height/2),
+              d:Math.round(b.width), paths:vis});
+  }
+  return out;
+};
+</script>

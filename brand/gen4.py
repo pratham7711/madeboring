@@ -1,0 +1,304 @@
+import pathlib
+
+ICONS = {
+ 'ring': '<path fill-rule="evenodd" d="M32 5a27 27 0 1 0 0 54 27 27 0 0 0 0-54Zm0 14.5a12.5 12.5 '
+         '0 1 1 0 25 12.5 12.5 0 0 1 0-25Z"/>',
+ 'fold': '<path d="M5 10h16l11 23 11-23h16L32 55Z"/><path class="dk" d="M21 10h8l3 23Z"/>',
+ 'bars': '<rect x="7" y="11" width="50" height="8"/><rect x="7" y="25" width="37" height="8"/>'
+         '<rect x="7" y="39" width="24" height="8"/><rect x="7" y="53" width="12" height="8"/>',
+ 'asm':  '<path class="t1" d="M32 4 58 30H44L32 18Z"/><path class="t2" d="M32 24 58 50H44L32 38Z"/>'
+         '<path class="t3" d="M32 24 20 36 6 36 32 10Z"/>',
+}
+
+CONCEPTS = [
+ ('d1', 'ring', 'The O', 'recommended',
+  'The mark <em>is</em> a letter in the domain. A big bored ring flies in, shrinks into its slot, '
+  'and the rest of madeb<b>o</b>ring.com fills in around it. The favicon is simply the ring — which '
+  'means your icon and your name are the same object, the trick that lets one shape stand for the '
+  'whole brand.',
+  'Strongest idea and the cleanest favicon — a ring is unmistakable at 16px. Also the only one '
+  'where the icon and the wordmark are the same design decision rather than two.'),
+ ('d2', 'fold', 'The Fold', 'strong',
+  'The chevron folds itself flat and becomes the plain horizontal rule under the name. Complexity '
+  'collapsing into a straight edge — the brand promise performed rather than stated.',
+  'The most premium silhouette of the four and a genuinely good app icon. Slightly weaker as a '
+  'concept than The O because the mark and the name stay separate objects.'),
+ ('d3', 'bars', 'The Collapse', 'strong',
+  'Four bars, each shorter than the last, slide down and fold into one another until all that is '
+  'left is the name. Steps being removed, one per bar.',
+  'The most literal statement of the service, and the only one that would double as a loading '
+  'state inside the product. Weakest favicon — four thin bars start to blur at 16px.'),
+ ('d4', 'asm', 'The Assembly', 'safe',
+  'Three segments at three tints arrive from three directions and lock together, then the wordmark '
+  'slides out from behind. The Jira and Atlassian construction, applied here.',
+  'The safest and most conventionally “tech company” of the four. Reads as credible immediately, '
+  'at the cost of looking like several marks you already know.'),
+]
+
+VERD = {'recommended': ('Recommended', 'var(--green)'), 'strong': ('Strong', 'var(--ink)'),
+        'safe': ('Safe', 'var(--muted)')}
+
+
+def icon(key, cls=''):
+    return ('<svg class="ic %s" viewBox="0 0 64 64" aria-hidden="true">%s</svg>'
+            % (cls, ICONS[key]))
+
+
+STAGES = {
+ 'd1': '<div class="wm"><span class="seg s1">madeb</span><i class="ring"></i>'
+       '<span class="seg s2">ring</span><span class="seg s3 dim">.com</span></div>',
+ 'd2': '<div class="stack"><svg class="chev" viewBox="0 0 96 52" aria-hidden="true">'
+       '<path d="M4 6h22l22 30 22-30h22L48 48Z"/><path class="lo" d="M26 6h14L48 36Z"/></svg>'
+       '<div class="wm"><span>madeboring</span><span class="dim">.com</span></div>'
+       '<div class="rule"></div></div>',
+ 'd3': '<div class="bars"><div class="b b1" style="--dy:58px"></div>'
+       '<div class="b b2" style="--dy:38px"></div><div class="b b3" style="--dy:19px"></div>'
+       '<div class="b b4" style="--dy:0px"></div></div>'
+       '<div class="wm"><span>madeboring</span><span class="dim">.com</span></div>',
+ 'd4': '<div class="asm"><svg class="asmv" viewBox="0 0 64 64" aria-hidden="true">'
+       '<path class="p1 t1" d="M32 4 58 30H44L32 18Z"/>'
+       '<path class="p2 t2" d="M32 24 58 50H44L32 38Z"/>'
+       '<path class="p3 t3" d="M32 24 20 36 6 36 32 10Z"/></svg>'
+       '<div class="wm"><span>madeboring</span><span class="dim">.com</span></div></div>',
+}
+
+blocks = []
+for did, ikey, name, verd, story, take in CONCEPTS:
+    label, col = VERD[verd]
+    dark = ' dark' if did == 'd4' else ''
+    blocks.append(f'''
+<section class="cx">
+  <div class="cx-head">
+    <h2>{name}</h2>
+    <span class="verdict" style="--vc:{col}">{label}</span>
+  </div>
+  <p class="story">{story}</p>
+
+  <div class="panel">
+    <div class="ptitle"><span class="lbl">Animation &mdash; mark resolving into the domain</span>
+      <button class="replay" data-for="{did}">Replay</button></div>
+    <div class="stage{dark}" id="{did}">{STAGES[did]}</div>
+  </div>
+
+  <div class="grid3">
+    <div class="panel">
+      <div class="ptitle"><span class="lbl">Favicon, in a tab</span></div>
+      <div class="pad tabwrap">
+        <div class="tabs">
+          <div class="tab active">{icon(ikey, 'fav')}<span>madeboring.com</span></div>
+          <div class="tab"><span class="ph"></span><span>Gmail</span></div>
+        </div>
+        <div class="tabbody"></div>
+      </div>
+      <div class="pad row-c">
+        <div class="szc"><div class="szbox">{icon(ikey)}</div><span>16</span></div>
+        <div class="szc"><div class="szbox b32">{icon(ikey)}</div><span>32</span></div>
+        <div class="szc"><div class="szbox b64">{icon(ikey)}</div><span>64</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ptitle"><span class="lbl">App icon</span></div>
+      <div class="pad row-c tall">
+        <div class="szc"><div class="app light">{icon(ikey)}</div><span>light</span></div>
+        <div class="szc"><div class="app dark">{icon(ikey, 'inv')}</div><span>dark</span></div>
+        <div class="szc"><div class="app fill">{icon(ikey, 'onfill')}</div><span>solid</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ptitle"><span class="lbl">Logo lockup</span></div>
+      <div class="pad">
+        <div class="biglock">{icon(ikey)}<b>made boring</b></div>
+        <div class="navmock"><span class="nb">{icon(ikey)}<b>made boring</b></span>
+          <span class="nlinks">Work &nbsp; Services &nbsp; Contact</span></div>
+        <div class="navmock ink"><span class="nb">{icon(ikey, 'inv')}<b>made boring</b></span>
+          <span class="nlinks">Work &nbsp; Services &nbsp; Contact</span></div>
+        <div class="cardmock">{icon(ikey)}<div><b>madeboring.com</b><i>AI and software, boringly simple</i></div></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="take"><span>My take</span>{take}</p>
+</section>''')
+
+CSS = """
+:root{--paper:#f4f3ef;--paper2:#eceae4;--ink:#101010;--green:#1b6b45;--mint:#34d399;
+ --deep:#0d4a2f;--rule:#cfcec7;--rule2:#e2e0d9;--muted:#6e6d66;
+ --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;
+ --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;
+ line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:clamp(24px,5vw,56px) clamp(16px,4vw,40px) 90px}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+ border-bottom:2px solid var(--ink);padding-bottom:12px}
+h1{font-size:clamp(28px,4.8vw,50px);line-height:1.03;letter-spacing:-.035em;font-weight:700;
+ margin-top:28px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--green)}
+.intro{max-width:64ch;margin-top:18px;color:var(--muted);font-size:16.5px}
+.intro b{color:var(--ink);font-weight:600}
+.cx{margin-top:66px;border-top:2px solid var(--ink);padding-top:20px}
+.cx-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.cx h2{font-size:30px;letter-spacing:-.03em;font-weight:700}
+.verdict{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+ border:1px solid var(--vc);color:var(--vc);padding:4px 9px}
+.story{max-width:66ch;margin-top:12px;color:#3a3a36;font-size:15.5px;line-height:1.62}
+.story b{color:var(--green)}
+.story em{font-style:italic}
+.take{margin-top:18px;font-size:14.5px;line-height:1.6;color:var(--muted);padding-left:14px;
+ border-left:2px solid var(--green);max-width:70ch}
+.take span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.13em;
+ text-transform:uppercase;color:var(--green);margin-bottom:3px}
+.panel{border:1px solid var(--rule);margin-top:16px;background:var(--paper)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;gap:12px;
+ padding:10px 14px;border-bottom:1px solid var(--rule2)}
+.pad{padding:16px 14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}}
+.grid3 .panel{margin-top:0}
+.replay{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+ border:1px solid var(--ink);background:transparent;color:var(--ink);padding:6px 11px;cursor:pointer}
+.replay:hover{background:var(--ink);color:var(--paper)}
+.replay:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.ic{display:block}
+.ic path,.ic rect{fill:var(--green)}
+.ic .dk{fill:var(--deep)}
+.ic .t1{fill:var(--mint)}.ic .t2{fill:var(--green)}.ic .t3{fill:var(--deep)}
+.ic.inv path,.ic.inv rect{fill:var(--mint)}
+.ic.inv .dk{fill:var(--green)}
+.ic.onfill path,.ic.onfill rect{fill:var(--paper)}
+.ic.onfill .dk{fill:#cfe6da}
+.ic.onfill .t1{fill:var(--paper)}.ic.onfill .t2{fill:#bfe3d0}.ic.onfill .t3{fill:#8fc9ae}
+.stage{background:var(--paper2);height:210px;display:grid;place-items:center;overflow:hidden;position:relative}
+.stage.dark{background:var(--ink)}
+.wm{display:flex;align-items:center;font-weight:700;letter-spacing:-.045em;
+ font-size:clamp(24px,4vw,44px);white-space:nowrap}
+.wm .dim{color:var(--muted)}
+.stage.dark .wm{color:var(--paper)}.stage.dark .wm .dim{color:#7d7b74}
+.tabwrap{padding-bottom:0}
+.tabs{display:flex;gap:4px;align-items:flex-end}
+.tab{display:flex;align-items:center;gap:7px;background:var(--paper2);border:1px solid var(--rule2);
+ border-bottom:0;border-radius:7px 7px 0 0;padding:7px 11px;font-size:11.5px;color:var(--muted);
+ max-width:170px;overflow:hidden;white-space:nowrap}
+.tab.active{background:#fff;color:var(--ink);font-weight:500}
+.tab .fav{width:15px;height:15px;flex:0 0 15px}
+.tab .ph{width:15px;height:15px;background:var(--rule);border-radius:3px;flex:0 0 15px}
+.tabbody{height:26px;background:#fff;border:1px solid var(--rule2);border-radius:0 5px 0 0}
+.row-c{display:flex;gap:16px;align-items:flex-end;justify-content:center;flex-wrap:wrap}
+.row-c.tall{padding-top:22px;padding-bottom:22px}
+.szc{display:flex;flex-direction:column;align-items:center;gap:7px}
+.szc span{font-family:var(--mono);font-size:9.5px;color:var(--muted)}
+.szbox{width:16px;height:16px}.szbox.b32{width:32px;height:32px}.szbox.b64{width:64px;height:64px}
+.szbox .ic{width:100%;height:100%}
+.app{width:62px;height:62px;border-radius:14px;display:grid;place-items:center;padding:12px}
+.app .ic{width:100%;height:100%}
+.app.light{background:var(--paper2);border:1px solid var(--rule2)}
+.app.dark{background:var(--ink)}
+.app.fill{background:var(--green)}
+.biglock{display:flex;align-items:center;gap:12px;justify-content:center;padding:20px 12px;
+ background:var(--paper2);border:1px solid var(--rule2);margin-bottom:9px}
+.biglock .ic{width:38px;height:38px;flex:0 0 38px}
+.biglock b{font-size:26px;font-weight:700;letter-spacing:-.035em}
+.navmock{display:flex;justify-content:space-between;align-items:center;gap:10px;
+ padding:10px 12px;border:1px solid var(--rule2);background:var(--paper2);margin-bottom:9px}
+.navmock.ink{background:var(--ink);border-color:var(--ink)}
+.nb{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:-.02em}
+.nb .ic{width:20px;height:20px;flex:0 0 20px}
+.navmock.ink .nb{color:var(--paper)}
+.nlinks{font-size:10.5px;color:var(--muted);white-space:nowrap}
+.cardmock{display:flex;align-items:center;gap:11px;padding:12px;border:1px solid var(--rule2)}
+.cardmock .ic{width:34px;height:34px;flex:0 0 34px}
+.cardmock b{display:block;font-size:13.5px}
+.cardmock i{display:block;font-style:normal;font-size:11.5px;color:var(--muted);margin-top:2px}
+.foot{margin-top:62px;border-top:2px solid var(--ink);padding-top:16px;display:flex;
+ justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;
+ letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+#d1 .seg{display:inline-block;opacity:0}
+#d1 .ring{display:inline-block;border-radius:50%;border:.19em solid var(--green);
+ width:.72em;height:.72em;margin:0 .02em;transform-origin:50% 50%}
+#d1.go .ring{animation:ringIn 3.1s cubic-bezier(.65,0,.28,1) forwards}
+#d1.go .s1{animation:fadeIn .5s ease-out 1.5s forwards}
+#d1.go .s2{animation:fadeIn .5s ease-out 1.65s forwards}
+#d1.go .s3{animation:fadeIn .5s ease-out 1.8s forwards}
+@keyframes ringIn{0%,55%{transform:scale(4.4) translateX(1.1em);border-width:.09em}
+ 100%{transform:none;border-width:.19em}}
+@keyframes fadeIn{to{opacity:1}}
+#d2 .stack{display:flex;flex-direction:column;align-items:center;gap:12px}
+#d2 .chev{width:92px;height:50px}
+#d2 .chev path{fill:var(--green)}#d2 .chev .lo{fill:var(--deep)}
+#d2.go .chev{animation:chevFlat 3.2s cubic-bezier(.6,0,.25,1) forwards}
+#d2 .wm{opacity:0}
+#d2.go .wm{animation:fadeIn .7s ease-out 1.55s forwards}
+#d2 .rule{height:5px;width:0;background:var(--green)}
+#d2.go .rule{animation:ruleOut 1.1s cubic-bezier(.6,0,.25,1) 1.5s forwards}
+@keyframes chevFlat{0%,38%{transform:none;opacity:1}100%{transform:scaleY(.06) translateY(22px);opacity:0}}
+@keyframes ruleOut{to{width:min(400px,66vw)}}
+#d3 .bars{display:flex;flex-direction:column;gap:9px;align-items:center}
+#d3 .b{height:11px;background:var(--green);border-radius:1px}
+#d3 .b1{width:180px}#d3 .b2{width:134px}#d3 .b3{width:90px}#d3 .b4{width:48px}
+#d3.go .b{animation:collapse 3.2s cubic-bezier(.62,0,.24,1) forwards}
+#d3.go .b2{animation-delay:.09s}#d3.go .b3{animation-delay:.18s}#d3.go .b4{animation-delay:.27s}
+@keyframes collapse{0%,30%{transform:none;opacity:1}
+ 62%{transform:translateY(var(--dy)) scaleX(.28);opacity:1}
+ 100%{transform:translateY(var(--dy)) scaleX(.28);opacity:0}}
+#d3 .wm{opacity:0;position:absolute}
+#d3.go .wm{animation:fadeIn .8s ease-out 1.75s forwards}
+#d4 .asm{display:flex;align-items:center;gap:15px}
+#d4 .asmv{width:70px;height:70px;overflow:visible}
+#d4 .p1,#d4 .p2,#d4 .p3{transform-origin:50% 50%}
+#d4.go .p1{animation:fly1 3.2s cubic-bezier(.6,0,.22,1) forwards}
+#d4.go .p2{animation:fly2 3.2s cubic-bezier(.6,0,.22,1) forwards}
+#d4.go .p3{animation:fly3 3.2s cubic-bezier(.6,0,.22,1) forwards}
+@keyframes fly1{0%{transform:translate(-90px,-70px) rotate(-40deg);opacity:0}
+ 16%{opacity:1}45%,100%{transform:none;opacity:1}}
+@keyframes fly2{0%{transform:translate(95px,-55px) rotate(35deg);opacity:0}
+ 16%{opacity:1}52%,100%{transform:none;opacity:1}}
+@keyframes fly3{0%{transform:translate(0,95px) rotate(20deg);opacity:0}
+ 16%{opacity:1}60%,100%{transform:none;opacity:1}}
+#d4 .wm{opacity:0;transform:translateX(-24px)}
+#d4.go .wm{animation:slideOut .85s cubic-bezier(.6,0,.25,1) 1.75s forwards}
+@keyframes slideOut{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+ *{animation:none!important}
+ #d1 .seg,#d2 .wm,#d3 .wm,#d4 .wm{opacity:1!important}
+ #d1 .ring,#d4 .wm{transform:none!important}
+ #d3 .bars{display:none}#d2 .rule{width:min(400px,66vw)}}
+"""
+
+JS = """
+(function(){
+ function play(id){var el=document.getElementById(id);if(!el)return;
+  el.classList.remove('go');void el.offsetWidth;el.classList.add('go');}
+ document.querySelectorAll('.replay').forEach(function(b){
+  b.addEventListener('click',function(){play(b.dataset.for);});});
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ var seen={};
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting&&!seen[e.target.id]){seen[e.target.id]=1;play(e.target.id);}});},
+  {threshold:.5});
+ ['d1','d2','d3','d4'].forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
+})();
+"""
+
+html = (
+ '<title>made boring — final selection</title>\n<style>' + CSS + '</style>\n'
+ '<div class="wrap">'
+ '<div class="top"><span class="lbl">made boring &middot; brand</span>'
+ '<span class="lbl">final selection &middot; 4 complete systems</span></div>'
+ '<h1>Four complete identities.<br><em>Pick one.</em></h1>'
+ '<p class="intro">Each one below is shown as a full system, not a drawing: the '
+ '<b>animation</b> resolving into the domain, the <b>favicon sitting in a real browser tab</b>, '
+ 'the icon at 16 / 32 / 64px, the <b>app icon</b> in light, dark and solid, and the '
+ '<b>logo lockup</b> in a navigation bar on both grounds. Everything is live CSS and SVG — what '
+ 'you see is what ships.</p>'
+ + ''.join(blocks) +
+ '<div class="foot"><span>Nothing here is live on madeboring.com</span>'
+ '<span>Reply with a name</span></div></div>'
+ '<script>' + JS + '</script>'
+)
+html = html.encode('ascii', 'xmlcharrefreplace').decode()
+pathlib.Path('final.html').write_text(html)
+print('written', round(len(html) / 1024, 1), 'KB')

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mb. asset kit — proof sheet</title>
+<link rel="icon" href="assets/field/svg/favicon.svg" type="image/svg+xml">
+<style>
+:root{--pg:#f3f0e7;--tx:#131c18;--mut:#5a6660;--ln:#cfd3cb;--br:#12523a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--pg);color:var(--tx);font:16px/1.6 system-ui,sans-serif;padding:34px}
+h1{font-size:26px;letter-spacing:-.02em;margin-bottom:6px}
+h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);
+ margin:34px 0 12px;font-family:ui-monospace,Menlo,monospace;border-bottom:1px solid var(--ln);
+ padding-bottom:6px}
+.row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end}
+.it{display:flex;flex-direction:column;gap:6px;align-items:center}
+.it span{font:10px/1 ui-monospace,Menlo,monospace;color:var(--mut);letter-spacing:.08em}
+img{display:block;image-rendering:auto}
+.tab{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--ln);
+ border-radius:8px 8px 0 0;padding:7px 12px;width:250px}
+.tab img{width:16px;height:16px}
+.tab b{font:13px system-ui;font-weight:400;white-space:nowrap;overflow:hidden;
+ text-overflow:ellipsis}
+.dark{background:#0d1a14;padding:18px;display:flex;gap:18px;flex-wrap:wrap;
+ align-items:flex-end}
+.wm{max-width:520px;width:100%}
+.anim{max-width:620px;width:100%;border:1px solid var(--ln)}
+.ban{max-width:440px;width:100%;border:1px solid var(--ln)}
+code{font:12px ui-monospace,Menlo,monospace;background:#e7e4d9;padding:2px 5px}
+</style></head><body>
+<h1>mb. asset kit &mdash; proof sheet</h1>
+<p style="color:var(--mut);font-size:14px">Every file rendered at the size it will actually be
+used. Field palette.</p>
+
+<h2>Favicon, real pixel sizes</h2>
+<div class="row">
+  <div class="it"><img src="assets/field/png/icon-16.png" width="16" height="16"><span>16</span></div>
+  <div class="it"><img src="assets/field/png/icon-32.png" width="32" height="32"><span>32</span></div>
+  <div class="it"><img src="assets/field/png/icon-48.png" width="48" height="48"><span>48</span></div>
+  <div class="it"><img src="assets/field/png/icon-64.png" width="64" height="64"><span>64</span></div>
+  <div class="it"><img src="assets/field/png/icon-96.png" width="96" height="96"><span>96</span></div>
+  <div class="it"><img src="assets/field/png/icon-128.png" width="128" height="128"><span>128</span></div>
+</div>
+<div class="row" style="margin-top:16px">
+  <div class="tab"><img src="assets/field/png/icon-16.png"><b>made boring &mdash; we make it boring</b></div>
+  <div class="it"><img src="assets/field/png/apple-touch-icon.png" width="90" height="90"><span>apple touch 180</span></div>
+  <div class="it"><img src="assets/field/png/maskable-192.png" width="90" height="90"><span>maskable</span></div>
+  <div class="it"><img src="assets/field/png/icon-512.png" width="90" height="90"><span>512</span></div>
+</div>
+
+<h2>Mark and wordmark, vector</h2>
+<div class="row">
+  <div class="it"><img src="assets/field/svg/mark-brand.svg" width="150"><span>mark</span></div>
+  <div class="it"><img src="assets/field/svg/wordmark-brand.svg" class="wm"><span>wordmark</span></div>
+</div>
+<div class="dark" style="margin-top:14px">
+  <img src="assets/field/svg/mark-cream.svg" width="150">
+  <img src="assets/field/svg/wordmark-cream.svg" class="wm">
+</div>
+
+<h2>Animated SVG &mdash; no JavaScript, loops on its own</h2>
+<img src="assets/field/svg/logo-animated.svg" class="anim" id="anim">
+<img src="assets/field/svg/logo-animated-light.svg" class="anim" style="margin-top:12px">
+
+<h2>Video exports &mdash; recorded from the real animation</h2>
+<div class="row">
+  <div class="it"><video src="assets/field/video/logo.mp4" autoplay loop muted playsinline
+    width="520" style="border:1px solid var(--ln)"></video><span>mp4 &middot; 76 KB</span></div>
+  <div class="it"><img src="assets/field/video/logo-light.webp" width="520"
+    style="border:1px solid var(--ln)"><span>animated webp &middot; 94 KB</span></div>
+</div>
+
+<h2>Social cards</h2>
+<div class="row">
+  <div class="it"><img src="assets/field/png/og.png" class="ban"><span>og 1200x630</span></div>
+  <div class="it"><img src="assets/field/png/twitter.png" class="ban"><span>twitter 1200x600</span></div>
+</div>
+
+<h2>Forest palette, same set</h2>
+<div class="row">
+  <div class="it"><img src="assets/forest/png/icon-16.png" width="16" height="16"><span>16</span></div>
+  <div class="it"><img src="assets/forest/png/icon-32.png" width="32" height="32"><span>32</span></div>
+  <div class="it"><img src="assets/forest/png/icon-64.png" width="64" height="64"><span>64</span></div>
+  <div class="it"><img src="assets/forest/png/apple-touch-icon.png" width="90" height="90"><span>apple</span></div>
+  <div class="it"><img src="assets/forest/png/og.png" class="ban"><span>og</span></div>
+</div>
+</body></html>

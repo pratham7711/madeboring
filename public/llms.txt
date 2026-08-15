@@ -1,0 +1,29 @@
+# made boring
+
+> An AI and software studio in Delhi, working worldwide. Builds AI workflow
+> automation, LLM and RAG integrations, custom web applications, dashboards
+> and systems integrations. Delivers a working pilot on a date fixed in
+> writing, or refunds 110% of the fee.
+
+## Main sections
+
+- [Warranty](https://madeboring.com/#warranty): The pilot guarantee — what starts the clock, what "delivered" means, who decides whether it was met, and what the client keeps if the date is missed.
+- [Problems](https://madeboring.com/#pain): Five researched failure patterns common to most businesses, each with a cited statistic.
+- [Your situation](https://madeboring.com/#you): The same problem shaped by company size, from solo operators to enterprises.
+- [What we build](https://madeboring.com/#build): Automation and AI first; custom software, integrations and web work alongside it.
+- [Ownership](https://madeboring.com/#ownership): Repository, infrastructure, IP, documentation and exit terms — all held by the client.
+- [How it works](https://madeboring.com/#engagement): The first five days, and how work is priced.
+- [Straight answers](https://madeboring.com/#objections): Direct answers on studio size, procurement, having no case studies yet, and whether a fixed date is realistic.
+
+## Key facts
+
+- Founded August 2026. Led by Pratham Sharma, Founder & CEO (https://prathamsharma.in).
+- Based in Delhi, India; works with clients worldwide.
+- Guarantee: a working pilot on the date committed in writing, or 110% of the fee returned.
+- The date and the price are both fixed on day five, after scoping, before any build starts.
+- The client alone decides whether the pilot was delivered. There is no appeal.
+- Pricing is fixed, never hourly.
+- The client holds the repository, cloud account and keys from day one; IP assigns at each milestone.
+- Signs client NDA, MSA and DPA; work runs in the client's own cloud.
+- Stack is deliberately standard: TypeScript, React, Next.js, Node.js, Python, PostgreSQL, LangChain, n8n, Zapier, Make.com, AWS, Vercel, Docker.
+- No case studies are published yet, and none are invented.
