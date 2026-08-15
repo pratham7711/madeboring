@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { motion, useReducedMotion } from 'motion/react';
+import HeroFilm from '@/components/HeroFilm';
 import { SPEC } from '@/lib/content';
 
 export default function Hero() {
@@ -33,10 +34,11 @@ export default function Hero() {
   return (
     <section className="hero hero-film" id="top" ref={root}>
       <div className="hero-bg">
-        <div className="matchcut" aria-hidden="true">
-          <img className="mc-a" src="/video/hard.jpg" alt="" />
-          <img className="mc-b" src="/video/simple.jpg" alt="" />
-        </div>
+        <HeroFilm
+          webm="/video/desk.webm"
+          mp4="/video/desk.mp4"
+          poster="/video/desk-poster.jpg"
+        />
         <div className="grid-lines" aria-hidden="true" />
         <div className="veil veil-film" aria-hidden="true" />
       </div>
