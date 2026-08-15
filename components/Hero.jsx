@@ -3,8 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { motion, useReducedMotion } from 'motion/react';
-import ShaderField from '@/components/ShaderField';
-import { FRAG } from '@/components/shaders';
 import { SPEC } from '@/lib/content';
 
 export default function Hero() {
@@ -33,11 +31,21 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="hero" id="top" ref={root}>
+    <section className="hero hero-film" id="top" ref={root}>
       <div className="hero-bg">
-        <ShaderField frag={FRAG.current} />
+        <video
+          className="hero-film-layer"
+          src="/video/fullstop.mp4"
+          poster="/video/fullstop-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
         <div className="grid-lines" aria-hidden="true" />
-        <div className="veil veil-radial" aria-hidden="true" />
+        <div className="veil veil-film" aria-hidden="true" />
       </div>
       <div className="shell hero-in">
         <div className="sheet-top hf">
@@ -50,7 +58,7 @@ export default function Hero() {
           </span>
           <span className="rl">
             <span>
-              it <em>boring.</em>
+              it <em>boring</em>
             </span>
           </span>
         </h1>
@@ -65,10 +73,13 @@ export default function Hero() {
               <a className="btn" href="#contact">
                 <span>Start the pilot</span>
               </a>
-              <a className="btn-txt" href="#warranty">
-                <span>How the guarantee works →</span>
+              <a className="btn-txt" href="#contact">
+                <span>Or just tell us what keeps breaking →</span>
               </a>
             </div>
+            <p className="hero-risk hf">
+              Hearing &ldquo;no&rdquo; is free · <b>One reply, from Pratham, usually the same day</b>
+            </p>
           </div>
 
           <motion.div

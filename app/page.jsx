@@ -8,6 +8,7 @@ import Reveal from '@/components/Reveal';
 import Ic, { StackIc, hasStackIcon } from '@/components/Icons';
 import ContactForm from '@/components/ContactForm';
 import Glow from '@/components/Glow';
+import StickyCta from '@/components/StickyCta';
 import Carousel from '@/components/Carousel';
 import { BrowserMock, ChatMock, DashMock, FlowMock, ReplyMock } from '@/components/Mocks';
 import {
@@ -65,6 +66,7 @@ export default function Page() {
                   <a className="btn" href="#contact">
                     <span>Start the pilot</span>
                   </a>
+                  <span className="war-risk">Hearing &ldquo;no&rdquo; is free.</span>
                 </div>
               </div>
               <div className="war-terms">
@@ -228,7 +230,7 @@ export default function Page() {
                 </ul>
                 <p className="price-after">{PRICING.after}</p>
                 <a className="btn" href="#contact">
-                  <span>Start the pilot</span>
+                  <span>Get the number and the date</span>
                 </a>
               </div>
             </Reveal>
@@ -315,13 +317,15 @@ export default function Page() {
                   </div>
                 )}
               </Reveal>
-              <figure className="contact-panel">
+              <Reveal className="contact-panel" selector=".rep-body" as="figure">
                 <ReplyMock />
-              </figure>
+              </Reveal>
             </div>
           </div>
         </section>
       </main>
+
+      <StickyCta />
 
       <footer className="foot">
         <div className="shell">
