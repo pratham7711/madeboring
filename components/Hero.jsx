@@ -33,17 +33,10 @@ export default function Hero() {
   return (
     <section className="hero hero-film" id="top" ref={root}>
       <div className="hero-bg">
-        <video
-          className="hero-film-layer"
-          src="/video/nobody.mp4"
-          poster="/video/nobody-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        />
+        <div className="matchcut" aria-hidden="true">
+          <img className="mc-a" src="/video/hard.jpg" alt="" />
+          <img className="mc-b" src="/video/simple.jpg" alt="" />
+        </div>
         <div className="grid-lines" aria-hidden="true" />
         <div className="veil veil-film" aria-hidden="true" />
       </div>
@@ -54,11 +47,11 @@ export default function Hero() {
 
         <h1 className="display">
           <span className="rl">
-            <span>{'We make '}</span>
+            <span>{'Hard things,'}</span>
           </span>
           <span className="rl">
             <span>
-              it <em>boring</em>
+              <em>boringly simple.</em>
             </span>
           </span>
         </h1>
@@ -66,8 +59,8 @@ export default function Hero() {
         <div className="hero-grid">
           <div>
             <p className="lede hf">
-              Interesting software pages you at 3am. We build the other kind &mdash; and you keep
-              every key.
+              The thing your team does by hand at the end of every month becomes one button.
+              Fixed date, fixed number &mdash; and you keep every key.
             </p>
             <div className="hero-cta hf">
               <a className="btn" href="#contact">

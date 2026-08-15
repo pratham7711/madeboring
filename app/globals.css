@@ -3370,38 +3370,57 @@ p.rep-hot {
   line-height: 1.5;
 }
 
-/* ================= hero film — Nobody's There ================= */
+/* ============ hero film — the match cut: hard -> boringly simple ============ */
 
 .hero-film .hero-bg {
   background: #0b0c0d;
 }
 
-.hero-film-layer {
+.matchcut {
+  position: absolute;
+  inset: 0;
+}
+
+.matchcut img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% 50%;
-  opacity: 0.92;
+  object-position: 58% 50%;
 }
 
-/* photographic plate: the copy needs a real scrim, not a blend mode */
+/* BEFORE holds, dissolves to AFTER, which holds longer — the payoff gets the time */
+.mc-a { animation: mcHard 11s ease-in-out infinite; }
+.mc-b { animation: mcSimple 11s ease-in-out infinite; opacity: 0; }
+
+@keyframes mcHard {
+  0%, 30%   { opacity: 1; }
+  42%, 88%  { opacity: 0; }
+  100%      { opacity: 1; }
+}
+
+@keyframes mcSimple {
+  0%, 30%   { opacity: 0; }
+  42%, 88%  { opacity: 1; }
+  100%      { opacity: 0; }
+}
+
 .veil-film {
   background:
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--ground) 96%, transparent) 0%,
-      color-mix(in srgb, var(--ground) 88%, transparent) 26%,
-      color-mix(in srgb, var(--ground) 58%, transparent) 48%,
-      color-mix(in srgb, var(--ground) 20%, transparent) 72%,
+      color-mix(in srgb, var(--ground) 97%, transparent) 0%,
+      color-mix(in srgb, var(--ground) 90%, transparent) 24%,
+      color-mix(in srgb, var(--ground) 62%, transparent) 46%,
+      color-mix(in srgb, var(--ground) 22%, transparent) 74%,
       transparent 100%
     ),
-    linear-gradient(to bottom, color-mix(in srgb, var(--ground) 80%, transparent) 0%, transparent 24%, transparent 62%, var(--ground) 100%);
+    linear-gradient(to bottom, color-mix(in srgb, var(--ground) 82%, transparent) 0%, transparent 26%, transparent 60%, var(--ground) 100%);
 }
 
 .hero-film .grid-lines {
-  opacity: 0.14;
+  opacity: 0.12;
 }
 
 .hero-risk {
@@ -3428,25 +3447,21 @@ p.rep-hot {
 }
 
 .hero-film .bench-chip {
-  background: color-mix(in srgb, var(--ground) 78%, transparent);
+  background: color-mix(in srgb, var(--ground) 80%, transparent);
   backdrop-filter: blur(8px);
 }
 
 @media (max-width: 860px) {
-  .hero-film-layer {
-    object-position: 70% 40%;
-    opacity: 0.7;
+  .matchcut img {
+    object-position: 66% 42%;
+    opacity: 0.72;
   }
   .veil-film {
-    background: linear-gradient(to bottom, color-mix(in srgb, var(--ground) 78%, transparent) 0%, color-mix(in srgb, var(--ground) 62%, transparent) 40%, var(--ground) 78%);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--ground) 80%, transparent) 0%, color-mix(in srgb, var(--ground) 66%, transparent) 42%, var(--ground) 80%);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-film-layer {
-    display: none;
-  }
-  .hero-film .hero-bg {
-    background: #0b0c0d url('/video/nobody-poster.jpg') no-repeat 62% 50% / cover;
-  }
+  .mc-a { animation: none; opacity: 0; }
+  .mc-b { animation: none; opacity: 1; }
 }
