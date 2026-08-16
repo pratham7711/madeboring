@@ -121,9 +121,9 @@ export function ReplyMock() {
       <div className="rep-body">
         <span className="rep-from">made boring</span>
         <p>Read it. Two of the three are worth building.</p>
-        <p>The third one your CRM already does — I will show you where.</p>
+        <p>The third one your CRM already does. I will show you where.</p>
         <p className="rep-hot">Fixed number and a date on Friday.</p>
-        <span className="rep-sig">— Pratham</span>
+        <span className="rep-sig">Pratham</span>
       </div>
     </div>
   );

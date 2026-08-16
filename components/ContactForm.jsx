@@ -37,7 +37,7 @@ export default function ContactForm() {
         <Ic name="check" size={22} />
         <div>
           <strong>Received.</strong>
-          <p>A real answer is on its way — worth building or not, roughly what it costs, and how long.</p>
+          <p>A real answer is on its way. Worth building or not, roughly what it costs, and how long.</p>
         </div>
       </div>
     );

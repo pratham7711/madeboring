@@ -21,7 +21,7 @@ const DESC =
 
 export const metadata = {
   metadataBase: new URL('https://madeboring.com'),
-  title: 'made boring — AI and software, boringly simple',
+  title: 'made boring | AI and software, boringly simple',
   description: DESC,
   keywords: [
     'AI workflow automation',
@@ -37,7 +37,7 @@ export const metadata = {
     'automation audit',
   ],
   openGraph: {
-    title: 'made boring — AI and software, boringly simple',
+    title: 'made boring | AI and software, boringly simple',
     description: DESC,
     url: 'https://madeboring.com',
     siteName: 'made boring',
@@ -46,7 +46,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'made boring — AI and software, boringly simple',
+    title: 'made boring | AI and software, boringly simple',
     description: DESC,
     images: ['/og.png'],
   },

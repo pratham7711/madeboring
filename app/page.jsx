@@ -66,7 +66,7 @@ export default function Page() {
                   <a className="btn" href="#contact">
                     <span>Start the pilot</span>
                   </a>
-                  <span className="war-risk">Hearing &ldquo;no&rdquo; is free.</span>
+                  <span className="war-risk">Nothing is built before you agree the number.</span>
                 </div>
               </div>
               <div className="war-terms">
@@ -80,7 +80,7 @@ export default function Page() {
         <section className="sec pain-sec" id="pain">
           <div className="shell">
             <Reveal className="sec-head" selector=".rv">
-              <span className="lbl rv">The cost of interesting</span>
+              <span className="lbl rv">What it costs you</span>
               <h2 className="h2 rv">Five things quietly true in almost every business.</h2>
             </Reveal>
             <Reveal className="bento" selector=".bn" stagger={0.08} y={18}>
@@ -132,13 +132,13 @@ export default function Page() {
         <section className="sec" id="build">
           <div className="shell">
             <Reveal className="sec-head" selector=".rv">
-              <h2 className="h2 rv">We lead with automation and AI. The rest, we also build.</h2>
+              <h2 className="h2 rv">We start with whatever can run itself.</h2>
             </Reveal>
             <Reveal className="build-split" selector=".bl" stagger={0.12} y={18}>
               <figure className="bl build-fig">
                 <FlowMock />
                 <figcaption className="lbl">
-                  The shape of almost every job &mdash; five steps, unwatched
+                  The shape of almost every job. Five steps, unwatched
                 </figcaption>
               </figure>
             </Reveal>
@@ -155,7 +155,7 @@ export default function Page() {
                     ))}
                   </ul>
                   <a className="more-link" href="#contact">
-                    +{g.more} more — ask about yours
+                    +{g.more} more. Ask about yours
                   </a>
                 </div>
               ))}
@@ -183,7 +183,7 @@ export default function Page() {
                 <span className="lbl">Nothing exotic</span>
                 <p>
                   Standard tools with large hiring pools. If you replace us, you are hiring for
-                  these — not for us.
+                  these, not for us.
                 </p>
               </div>
               <div className="chips">
@@ -246,7 +246,7 @@ export default function Page() {
             <div className="obj-who">
               <span className="lbl">Who you are dealing with</span>
               <p>
-                <strong>{LEAD.name}</strong>, {LEAD.title} — {LEAD.line}{' '}
+                <strong>{LEAD.name}</strong>, {LEAD.title}. {LEAD.line}{' '}
                 <a className="uline" href={LEAD.href} target="_blank" rel="noopener">
                   {LEAD.hrefLabel} ↗
                 </a>
@@ -269,7 +269,7 @@ export default function Page() {
               <Reveal className="cta" selector=".rv">
                 <h2 className="h2 rv">Tell us the thing that keeps breaking.</h2>
                 <p className="lede rv">
-                  Worth building or not, what it costs, how long. Hearing &ldquo;no&rdquo; is free.
+                  Worth building or not, what it costs, how long. You get all three back.
                 </p>
                 <div className="rv">
                   <ContactForm />
@@ -298,7 +298,7 @@ export default function Page() {
                         <a
                           className="chan-btn"
                           href={`https://wa.me/${WA}?text=${encodeURIComponent(
-                            'Hi — something in my business keeps breaking.'
+                            'Hi, something in my business keeps breaking.'
                           )}`}
                           target="_blank"
                           rel="noopener"

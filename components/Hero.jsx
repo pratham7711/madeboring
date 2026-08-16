@@ -44,16 +44,16 @@ export default function Hero() {
       </div>
       <div className="shell hero-in">
         <div className="sheet-top hf">
-          <span className="lbl accent">AI &amp; software studio</span>
+          <span className="lbl accent">Fixed date. Fixed price.</span>
         </div>
 
         <h1 className="display">
           <span className="rl">
-            <span>{'Hard things,'}</span>
+            <span>{'Your month-end,'}</span>
           </span>
           <span className="rl">
             <span>
-              <em>boringly simple.</em>
+              <em>in one click.</em>
             </span>
           </span>
         </h1>
@@ -61,19 +61,19 @@ export default function Hero() {
         <div className="hero-grid">
           <div>
             <p className="lede hf">
-              The thing your team does by hand at the end of every month becomes one button.
-              Fixed date, fixed number &mdash; and you keep every key.
+              The job someone does by hand every month becomes a button, whether that is
+              one person or five hundred. Priced and dated on day five, or 110% back.
             </p>
             <div className="hero-cta hf">
               <a className="btn" href="#contact">
                 <span>Start the pilot</span>
               </a>
               <a className="btn-txt" href="#contact">
-                <span>Or just tell us what keeps breaking →</span>
+                <span>What keeps breaking? →</span>
               </a>
             </div>
             <p className="hero-risk hf">
-              Hearing &ldquo;no&rdquo; is free · <b>One reply, from Pratham, usually the same day</b>
+              <b>One reply, from Pratham</b>, usually the same day
             </p>
           </div>
 

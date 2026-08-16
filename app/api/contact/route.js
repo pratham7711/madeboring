@@ -31,7 +31,7 @@ export async function POST(req) {
       from: `"madeboring.com" <${user}>`,
       to,
       replyTo: `"${name.replace(/"/g, '')}" <${email}>`,
-      subject: `madeboring.com enquiry — ${name}`,
+      subject: `madeboring.com enquiry: ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
     });
     return Response.json({ ok: true });
