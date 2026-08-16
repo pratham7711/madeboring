@@ -3,8 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { motion, useReducedMotion } from 'motion/react';
-import HeroFilm from '@/components/HeroFilm';
-import { SPEC } from '@/lib/content';
+import HeroConsole from '@/components/HeroConsole';
 
 export default function Hero() {
   const root = useRef(null);
@@ -32,15 +31,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="hero hero-film" id="top" ref={root}>
+    <section className="hero hero-live" id="top" ref={root}>
       <div className="hero-bg">
-        <HeroFilm
-          webm="/video/desk.webm"
-          mp4="/video/desk.mp4"
-          poster="/video/desk-poster.jpg"
-        />
         <div className="grid-lines" aria-hidden="true" />
-        <div className="veil veil-film" aria-hidden="true" />
+        <div className="veil veil-radial" aria-hidden="true" />
       </div>
       <div className="shell hero-in">
         <div className="sheet-top hf">
@@ -78,27 +72,13 @@ export default function Hero() {
           </div>
 
           <motion.div
-            className="hf"
+            className="hf hero-con"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={reduce ? { duration: 0 } : { delay: 0.85, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bench">
-              <span className="lbl">What we build</span>
-              <div className="bench-set">
-                {SPEC.map((s, i) => (
-                  <motion.span
-                    className="bench-chip"
-                    key={s.id}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={reduce ? { duration: 0 } : { delay: 1.05 + i * 0.08, duration: 0.45 }}
-                  >
-                    {s.name}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
+            <HeroConsole />
+            <span className="hero-con-cap lbl">Nobody is watching this</span>
           </motion.div>
         </div>
 
