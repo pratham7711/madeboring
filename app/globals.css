@@ -3580,3 +3580,21 @@ p.rep-hot {
 .hero-grid .lede {
   max-width: 44ch;
 }
+
+/* registered address and GSTIN carry the same weight as the rest of the footer meta */
+.foot-addr {
+  margin-top: var(--sp-3);
+  font-style: normal;
+  font-size: var(--step--1);
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+.foot-gst {
+  display: inline-block;
+  margin-top: 0.35em;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--step--2);
+  letter-spacing: var(--track-mono);
+  color: var(--ink-3);
+}

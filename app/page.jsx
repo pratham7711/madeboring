@@ -341,6 +341,13 @@ export default function Page() {
                 </a>
                 .
               </p>
+              <address className="foot-addr">
+                TA-327, II Floor, Tughlakabad Extension
+                <br />
+                Main Okhla Road, New Delhi 110019
+                <br />
+                <span className="foot-gst">GSTIN 07AAIHD6941F1ZB</span>
+              </address>
             </div>
             <div>
               <h3>Site</h3>
