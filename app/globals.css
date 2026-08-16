@@ -3575,3 +3575,8 @@ p.rep-hot {
     transform: translate(-50%, 0);
   }
 }
+
+/* hero lede sits tighter than body ledes so the block reads light against the film */
+.hero-grid .lede {
+  max-width: 44ch;
+}
